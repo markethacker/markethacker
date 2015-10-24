@@ -21,7 +21,7 @@ class OrdersController < ApplicationController
     @order.status = true
     @order.save
     respond_to do |format|
-      format.json { render :json => @order }
+      format.json { render :json => @order, status => 200 }
     end
   end
 
