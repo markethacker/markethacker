@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20151024045332) do
 
-  create_table "goods", force: :cascade do |t|
+  create_table "goodses", force: :cascade do |t|
     t.string   "gid",        null: false
     t.string   "name",       null: false
     t.string   "desc"

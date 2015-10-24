@@ -1,6 +1,6 @@
 class CreateGoods < ActiveRecord::Migration
   def change
-    create_table :goods do |t|
+    create_table :goodses do |t|
       t.string :gid, null: false
       t.string :name, null: false
       t.string :desc
