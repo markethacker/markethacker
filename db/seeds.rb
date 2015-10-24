@@ -6,6 +6,3 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 user = User.create({uid: "20151024001", name: "test01", pass: "123456"})
-
-File.open('public/hongniu.jpg') do |f| product.avatar = f end
-product.save	
