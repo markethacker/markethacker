@@ -10,4 +10,6 @@ Rails.application.routes.draw do
 
   root to: 'products#index'
 
+  put '/orders/:oid/pay' => 'orders#pay'
+
 end

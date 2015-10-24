@@ -11,8 +11,17 @@ class OrdersController < ApplicationController
     @order = get_order
 
     respond_to do |format|
-      format.json { render :json => { order: @order } }
+      format.json { render :json => {order: @order} }
       format.html
+    end
+  end
+
+  def pay
+    @order = get_order
+    @order.status = true
+    @order.save
+    respond_to do |format|
+      format.json { render :json => @order }
     end
   end
 
@@ -30,8 +39,7 @@ class OrdersController < ApplicationController
     order_details = params[:order_details]
 
     if order_details.to_a.empty?
-      render :json => { order: nil }
-      return
+      render :json => {order: nil}
     end
 
     @order = Order.new
@@ -53,7 +61,7 @@ class OrdersController < ApplicationController
     end
 
 
-    render :json => { order: @order }
+    render :json => {order: @order}
 
   end
 
