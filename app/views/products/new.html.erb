@@ -1,0 +1,50 @@
+<h3>新建产品</h3>
+  <div class="col-md-9">
+    <div class="panel panel-default">
+      <div class="panel-body">
+      	<%= form_for @product, :html => {class: 'form-horizontal'} do |f| %>
+      	   
+      	   <div class="form-group">
+		           <%= f.label 'PID', class: 'col-md-2 control-label' %>
+             <div class="col-md-8">
+             	<%= f.text_field :pid, class: 'form-control' %>
+             </div>
+           </div>
+
+      	   <div class="form-group">
+		           <%= f.label '名称', class: 'col-md-2 control-label' %>
+             <div class="col-md-8">
+             	<%= f.text_field :name, class: 'form-control' %>
+             </div>
+           </div>
+
+           <div class="form-group">
+             <%= f.label '价格', class: 'col-md-2 control-label' %>
+             <div class="col-md-8">
+             	<%= f.text_field :price, class: 'form-control' %>
+             </div>
+           </div>
+
+           <div class="form-group">
+           	 <%= f.label '图片', class: 'col-md-2 control-label' %>
+           	 <div class="col-md-8">
+             	<%= f.file_field :avatar, class: 'form-control' %>
+             </div>
+           </div>
+             
+           <div class="form-group">
+          	<%= f.label '描述', class: 'col-md-2 control-label' %>
+            <div class="col-md-8">
+             	<%= f.text_area :desc, class: 'form-control', rows: 5 %>
+             </div>
+           </div>
+			
+		   <div class="form-group">
+             <div class="col-md-offset-2 col-md-8">
+             	<%= f.submit '提交', class: 'btn btn-danger btn-block'%>
+             </div>
+           </div>    	
+		<% end %>
+      </div>
+    </div>	
+  </div>	
