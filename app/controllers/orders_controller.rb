@@ -1,10 +1,19 @@
 class OrdersController < ApplicationController
-  def update
+
+  def index
+    @orders = Order.all
+    respond_to do |format|
+      format.html
+    end
   end
 
   def show
     @order = Order.find_by_oid(params[:id])
-    render :json => @order
+
+    respond_to do |format|
+      format.json { render :json => @order }
+      format.html
+    end
   end
 
   def create
