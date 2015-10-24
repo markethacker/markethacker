@@ -20,9 +20,7 @@ class OrdersController < ApplicationController
     @order = get_order
     @order.status = true
     @order.save
-    respond_to do |format|
-      format.json { render :json => @order, :status => 200 }
-    end
+    render :json => @order
   end
 
   def destroy
