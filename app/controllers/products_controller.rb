@@ -1,9 +1,18 @@
 class ProductsController < ApplicationController
-
-  before_action :find_a_product, only: [:destroy]
-
+  
+  before_action :find_a_product, only: [:destroy, :show, :edit, :update]
+  
   def new
     @product = Product.new
+  end
+
+  def edit
+  end
+
+  def update
+    @product.update(product_param)
+    @product.save
+    redirect_to products_path
   end
 
   def create
@@ -17,7 +26,7 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.find_by_pid(params[:id])
+    # @product = Product.find_by_pid(params[:pid])
     render :json => @product
   end
 
@@ -37,7 +46,7 @@ class ProductsController < ApplicationController
 
   private
   def find_a_product
-    @product = Product.find(params[:id])
+    @product = Product.find_by_pid(params[:pid])
   end
 
   def product_param

@@ -7,7 +7,8 @@
         <div class="col-md-12"><b>ID:</b><%= product.pid %></div>
         <div class="col-md-12"><b>Name:</b><%= product.name %></div>
         <div class="col-md-12"><b>Price:</b><%= product.price %></div>
-        <div class="col-md-12"><%= link_to '删除', product_path(product), method: :delete, data: {confirm: '你确定删除吗?'} %></div>
+        <div class="col-md-12"><%= link_to '删除', product_path(product.pid), method: :delete, data: {confirm: '你确定删除吗?'} %></div>
+        <div class="col-md-12"><%= link_to '修改', edit_product_path(product.pid) %></div>
       </div>
     </div>
 <% end %>

@@ -1,0 +1,69 @@
+<h3>修改产品</h3>
+<div class="col-md-12">
+  <div class="panel panel-default">
+    <div class="panel-body col-md-10">
+      <%= form_for @product, :url => { :controller => 'products', :action => 'update' },
+          :html => {class: 'form-horizontal'} do |f| %>
+
+          <div class="form-group">
+            <%= f.label 'PID', class: 'col-md-2 control-label' %>
+            <div class="col-md-8">
+              <%= f.text_field :pid, class: 'form-control' %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <%= f.label '名称', class: 'col-md-2 control-label' %>
+            <div class="col-md-8">
+              <%= f.text_field :name, class: 'form-control' %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <%= f.label '价格', class: 'col-md-2 control-label' %>
+            <div class="col-md-8">
+              <%= f.text_field :price, class: 'form-control' %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <%= f.label '图片', class: 'col-md-2 control-label' %>
+            <div class="col-md-8">
+              <%= f.file_field :avatar, class: 'form-control', onchange: 'readURL(this)'%>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <%= f.label '描述', class: 'col-md-2 control-label' %>
+            <div class="col-md-8">
+              <%= f.text_area :desc, class: 'form-control', rows: 5 %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-md-offset-2 col-md-8">
+              <%= f.submit '提交', class: 'btn btn-danger btn-block' %>
+            </div>
+          </div>
+      <% end %>
+    </div>
+    <div class="col-md-2">
+      <div id="img_prev"></div>
+    </div>
+  </div>
+</div>
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                var img = $("<img>").attr('src', e.target.result)
+                        .width(150)
+                        .height(200);
+                $('#img_prev').html(img)
+
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
