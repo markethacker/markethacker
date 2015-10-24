@@ -7,6 +7,7 @@
   <th>User</th>
   <th>Amount</th>
   <th>Status</th>
+  <th>Process</th>
   <th>Delete</th>
   </thead>
   <tbody>
@@ -16,6 +17,7 @@
         <td><%= order.user.name %></td>
         <td><%= order.amount %></td>
         <td><%= order.status %></td>
+        <td><%= order.process %></td>
         <td><%= link_to 'delete?', order_path(order.oid),
                         method: :delete, data: {confirm: '你确定删除吗?'} %></td>
       </tr>

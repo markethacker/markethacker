@@ -40,6 +40,7 @@ class OrdersController < ApplicationController
     @order.oid = UUIDTools::UUID.random_create.to_i.to_s
     @order.status = false
     @order.amount = 0
+    @order.process = false
     @order.save
 
     order_details.each do |detail|
@@ -49,7 +50,6 @@ class OrdersController < ApplicationController
       order_detail.price = detail[:price]
       order_detail.count = detail[:count]
       order_detail.save
-      # @order.order_details << order_detail
     end
 
 
