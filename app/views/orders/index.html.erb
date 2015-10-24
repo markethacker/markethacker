@@ -1,4 +1,3 @@
-
 <h3>Order Management</h3>
 
 <table class="table">
@@ -16,7 +15,12 @@
         <td><%= link_to order.oid, order_path(order.oid) %></td>
         <td><%= order.user.name %></td>
         <td><%= order.amount %></td>
-        <td><%= order.status %></td>
+        <td>
+          <% if order.status %>
+              支付完成
+          <% else %>
+              未支付
+          <% end %></td>
         <td><%= order.process %></td>
         <td><%= link_to 'delete?', order_path(order.oid),
                         method: :delete, data: {confirm: '你确定删除吗?'} %></td>

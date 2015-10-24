@@ -61,7 +61,7 @@ class OrdersController < ApplicationController
     end
 
 
-    render :json => {order: @order}
+    render :json => @order
 
   end
 
