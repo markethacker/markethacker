@@ -7,6 +7,7 @@
 		<th>name</th>
 		<th>price</th>
 		<th>desc</th>
+		<th>编辑</th>
 	</thead>
 	<tbody>
 		<% @products.each do |product| %>
@@ -16,6 +17,7 @@
 				<td><%= product.name %></td>
 				<td><%= product.price %></td>
 				<td><%= product.desc %></td>
+				<td><%= link_to '删除', product_path(product), method: :delete, data: {confirm: '你确定删除吗?'} %></td>	
 			</tr>
 		<% end %>
 	</tbody>
