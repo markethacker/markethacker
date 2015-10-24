@@ -8,6 +8,7 @@ class ProductsController < ApplicationController
 
   def create
   	product = Product.new(product_param)
+    product.pid = UUIDTools::UUID.random_create.to_i.to_s
   	if product.save
   		product.save
   		redirect_to products_path
@@ -41,7 +42,7 @@ class ProductsController < ApplicationController
   end
 
   def product_param
-  	params.require(:product).permit(:pid, :name, :price, :avatar, :desc)
+  	params.require(:product).permit(:name, :price, :avatar, :desc)
   end
 
 end
