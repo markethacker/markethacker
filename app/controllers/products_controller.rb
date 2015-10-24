@@ -1,20 +1,19 @@
 class ProductsController < ApplicationController
-  
+
   before_action :find_a_product, only: [:destroy]
-  
+
   def new
-  	@product = Product.new
+    @product = Product.new
   end
 
   def create
-  	product = Product.new(product_param)
-    product.pid = UUIDTools::UUID.random_create.to_i.to_s
-  	if product.save
-  		product.save
-  		redirect_to products_path
-  	else
-  		render :new
-  	end
+    product = Product.new(product_param)
+    if product.save
+      product.save
+      redirect_to products_path
+    else
+      render :new
+    end
   end
 
   def show
@@ -23,26 +22,26 @@ class ProductsController < ApplicationController
   end
 
   def index
-  	@products = Product.all
+    @products = Product.all
 
-  	respond_to do |format|
-  		format.html
-  		format.json {render :json => @products}
-  	end
+    respond_to do |format|
+      format.html
+      format.json { render :json => @products }
+    end
   end
 
   def destroy
-  	@product.destroy
+    @product.destroy
     redirect_to products_path
   end
 
-  private 
+  private
   def find_a_product
     @product = Product.find(params[:id])
   end
 
   def product_param
-  	params.require(:product).permit(:name, :price, :avatar, :desc)
+    params.require(:product).permit(:name, :price, :avatar, :desc, :pid)
   end
 
 end
