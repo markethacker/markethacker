@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :products
 
-  resources :orders, :only => [:create, :show, :index, :destroy]
+  resources :orders, :only => [:create, :show, :index, :destroy], :param => :oid
 
   resources :order_details, :only => [:create, :show]
 

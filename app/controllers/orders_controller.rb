@@ -8,16 +8,16 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find_by_oid(params[:id])
+    @order = get_order
 
     respond_to do |format|
-      format.json { render :json => @order }
+      format.json { render :json => { order: @order } }
       format.html
     end
   end
 
   def destroy
-    @order = Order.find_by_oid(params[:id])
+    @order = get_order
     @order.destroy
 
     respond_to do |format|
@@ -29,19 +29,37 @@ class OrdersController < ApplicationController
   def create
     order_details = params[:order_details]
 
-    return if order_details.to_a.empty?
+    if order_details.to_a.empty?
+      render :json => { order: nil }
+      return
+    end
 
     @order = Order.new
 
+    @order.user = User.first
+    @order.oid = UUIDTools::UUID.random_create.to_i.to_s
+    @order.status = false
+    @order.amount = 0
+    @order.save
+
     order_details.each do |detail|
-      @order.order_details << OrderDetail.create(detail)
+      order_detail = OrderDetail.new
+      order_detail.product = Product.find_by_pid(detail[:pid])
+      order_detail.order = @order
+      order_detail.price = detail[:price]
+      order_detail.count = detail[:count]
+      order_detail.save
+      # @order.order_details << order_detail
     end
 
-    @order.user = User.first
-    @order.oid= UUID.random_create.to_s
-    @order.save
 
     render :json => { order: @order }
 
+  end
+
+  private
+
+  def get_order
+    Order.find_by_oid(params[:oid])
   end
 end
