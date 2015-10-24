@@ -2,8 +2,8 @@
 
 <table class="table">
 	<thead>
-		<th>PID</th>
 		<th>Image</th>
+		<th>PID</th>
 		<th>name</th>
 		<th>price</th>
 		<th>desc</th>
@@ -12,8 +12,8 @@
 	<tbody>
 		<% @products.each do |product| %>
 			<tr>
+				<td><%= image_tag product.avatar.url, width: 100 %></td>
 				<td><%= product.pid %></td>
-				<td><%= product.image %></td>
 				<td><%= product.name %></td>
 				<td><%= product.price %></td>
 				<td><%= product.desc %></td>
