@@ -7,14 +7,17 @@
   <th>User</th>
   <th>price</th>
   <th>status</th>
+  <th>Delete</th>
   </thead>
   <tbody>
   <% @orders.each do |order| %>
       <tr>
-        <td><%= order.oid %></td>
+        <td><%= link_to order.oid, order_path(order.oid) %></td>
         <td><%= order.user.name %></td>
         <td><%= order.amount %></td>
         <td><%= order.status %></td>
+        <td><%= link_to 'delete?', order_path(order.oid),
+                        method: :delete, data: {confirm: '你确定删除吗?'} %></td>
       </tr>
   <% end %>
   </tbody>

@@ -16,6 +16,16 @@ class OrdersController < ApplicationController
     end
   end
 
+  def destroy
+    @order = Order.find_by_oid(params[:id])
+    @order.destroy
+
+    respond_to do |format|
+      format.json { render :nothing => true, :status => 200 }
+      format.html { redirect_to :action => :index }
+    end
+  end
+
   def create
     order_details = params[:order_details]
 
