@@ -1,14 +1,13 @@
 <h3>商品管理</h3>
 <% @products.each do |product| %>
     <div class="col-md-3">
-      <div class="col-md-6"><%= image_tag product.avatar.url, width: 100 %></div>
-      <div class="col-md-6">
+      <div class="col-md-4"><%= image_tag product.avatar.url, width: 100 %></div>
+      <div class="col-md-8">
         <div class="col-md-12"><b>Desc:</b><%= product.desc %></div>
         <div class="col-md-12"><b>ID:</b><%= product.pid %></div>
         <div class="col-md-12"><b>Name:</b><%= product.name %></div>
         <div class="col-md-12"><b>Price:</b><%= product.price %></div>
-        <div class="col-md-12"><%= link_to '删除', product_path(product.pid), method: :delete, data: {confirm: '你确定删除吗?'} %></div>
-        <div class="col-md-12"><%= link_to '修改', edit_product_path(product.pid) %></div>
+        <div class="col-md-12"><%= link_to '删除', product_path(product.pid), method: :delete, data: {confirm: '你确定删除吗?'} %>|<%= link_to '修改', edit_product_path(product.pid) %></div>
       </div>
     </div>
 <% end %>
