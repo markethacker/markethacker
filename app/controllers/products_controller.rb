@@ -4,4 +4,8 @@ class ProductsController < ApplicationController
     render :json => @product
   end
 
+  def index
+  	@products = Product.all
+  end
+
 end
