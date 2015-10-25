@@ -17,11 +17,15 @@
         <td><%= order.amount %></td>
         <td>
           <% if order.status %>
-              支付完成
+              已支付
           <% else %>
               未支付
           <% end %></td>
-        <td><%= order.process %></td>
+        <td><% if order.process %>
+              已处理
+          <% else %>
+              未处理
+          <% end %></td>
         <td><%= link_to 'delete?', order_path(order.oid),
                         method: :delete, data: {confirm: '你确定删除吗?'} %></td>
       </tr>
