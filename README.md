@@ -12,6 +12,8 @@
 
 ### 产品预览
 
+[youku 链接](http://v.youku.com/v_show/id_XMTM2ODgzOTg2MA==.html?from=s1.8-1-1.2)
+
 |![1](https://github.com/markethacker/markethacker/blob/master/picture/1.png)|![2](https://github.com/markethacker/markethacker/blob/master/picture/2.png)|![3](https://github.com/markethacker/markethacker/blob/master/picture/3.png)|![4](https://github.com/markethacker/markethacker/blob/master/picture/1.png)|
 |:---:|:---:|:---:|:---:|
 
